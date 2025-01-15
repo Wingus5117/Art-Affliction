@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "c529e6cd-f085-46e9-9b76-d416880d21fe",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -146,17 +137,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "95a802b9-2468-4aac-b217-fdbed5a10665",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5287515922839639055
+--- !u!1 &3249057996488112852
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1796924821708960235}
-  - component: {fileID: 1663666794430677667}
+  - component: {fileID: 8232499404832817815}
+  - component: {fileID: 6118330256756468448}
   m_Layer: 0
-  m_Name: HitstunAction
+  m_Name: HeavyAttackAction 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1796924821708960235
+--- !u!4 &8232499404832817815
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5287515922839639055}
+  m_GameObject: {fileID: 3249057996488112852}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4445473, y: -0.37834024, z: 5.0787888}
+  m_LocalPosition: {x: 7.093924, y: -3.0135336, z: 8.854724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1663666794430677667
+--- !u!114 &6118330256756468448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5287515922839639055}
+  m_GameObject: {fileID: 3249057996488112852}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d49c93862f7e13744b22263d995329a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionType: Other
-  ActionName: HitStun
-  isInteruptAction: 1
-  Animationclip: {fileID: 7400000, guid: 49dbeb151c8128341b6cac489f66d77e, type: 2}
+  ActionType: Attack
+  ActionName: HeavyAttack1
+  isInteruptAction: 0
+  Animationclip: {fileID: 7400000, guid: 24bd5a6ae16ba02408f38146542ee81d, type: 2}

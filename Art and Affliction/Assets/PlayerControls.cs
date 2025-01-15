@@ -71,15 +71,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""c529e6cd-f085-46e9-9b76-d416880d21fe"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -173,17 +164,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""95a802b9-2468-4aac-b217-fdbed5a10665"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4d1b72cc-6c9c-4e86-9ea0-9aa8bb442d4b"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -205,7 +185,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerMovement_LockOn = m_PlayerMovement.FindAction("LockOn", throwIfNotFound: true);
         m_PlayerMovement_Attack = m_PlayerMovement.FindAction("Attack", throwIfNotFound: true);
         m_PlayerMovement_HeavyAttack = m_PlayerMovement.FindAction("HeavyAttack", throwIfNotFound: true);
-        m_PlayerMovement_Dash = m_PlayerMovement.FindAction("Dash", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -277,7 +256,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_LockOn;
     private readonly InputAction m_PlayerMovement_Attack;
     private readonly InputAction m_PlayerMovement_HeavyAttack;
-    private readonly InputAction m_PlayerMovement_Dash;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -287,7 +265,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @LockOn => m_Wrapper.m_PlayerMovement_LockOn;
         public InputAction @Attack => m_Wrapper.m_PlayerMovement_Attack;
         public InputAction @HeavyAttack => m_Wrapper.m_PlayerMovement_HeavyAttack;
-        public InputAction @Dash => m_Wrapper.m_PlayerMovement_Dash;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -312,9 +289,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @HeavyAttack.started += instance.OnHeavyAttack;
             @HeavyAttack.performed += instance.OnHeavyAttack;
             @HeavyAttack.canceled += instance.OnHeavyAttack;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -334,9 +308,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @HeavyAttack.started -= instance.OnHeavyAttack;
             @HeavyAttack.performed -= instance.OnHeavyAttack;
             @HeavyAttack.canceled -= instance.OnHeavyAttack;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -361,6 +332,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLockOn(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnHeavyAttack(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
     }
 }

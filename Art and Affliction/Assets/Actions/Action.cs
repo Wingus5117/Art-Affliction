@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Action : MonoBehaviour
 {
-    //Seconds
-    //public float ActionDuration;
     //Attack Or Other
     public string ActionType;
     //LightAttack, HeavyAttack, Dash
     public string ActionName;
+    //Does it interupt other actions
     public bool isInteruptAction;
+    //Animation Played
+    public AnimationClip Animationclip;
 }

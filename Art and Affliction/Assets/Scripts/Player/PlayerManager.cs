@@ -14,7 +14,6 @@ public class PlayerManager : MonoBehaviour
         cameraManager = FindObjectOfType<CameraManager>();
     }
 
-
     private void Update()
     {
         inputManager.HandleAllInput();

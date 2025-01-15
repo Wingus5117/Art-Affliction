@@ -13,6 +13,14 @@ public class PlayerLocomotion : MonoBehaviour
     PlayerAnimationManager playerAnimationManager;
     ActionManager actionManager;
     Rigidbody rb;
+    
+    //GroundedCheck
+    public GameObject GroundedRayCastPoint;
+    public LayerMask Ground;
+    public bool isGrounded;
+
+    public float MaxDistance;
+    public float Radius;
 
     public float normalmovmentSpeed = 4;
     public float LockOnMovmentSpeed = 3;
@@ -90,13 +98,24 @@ public class PlayerLocomotion : MonoBehaviour
         }
         
     }
+    public void GroundedCheck()
+    {
+        if (Physics.CheckSphere(GroundedRayCastPoint.transform.position, Radius, Ground))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
     public void HandleAllMovment()
     {
-        //dont move if we are doing an action
-        if (!actionManager.actionQueueSlot_CurrentisFull && !playerCombatManager.isDead) 
+        GroundedCheck();
+        //dont move if we are doing an action or dead
+        if (!actionManager.actionQueueSlot_CurrentisFull && !playerCombatManager.isDead && isGrounded)  
         {
              HandleMovment();
-            
         }
         if (!playerCombatManager.isDead)
         {

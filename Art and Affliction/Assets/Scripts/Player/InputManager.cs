@@ -31,13 +31,20 @@ public class InputManager : MonoBehaviour
     internal bool LightAttackInput;
     internal bool HeavyAttackInput;
     private ActionManager ActionManager;
-    public Action LightAttackAction;
-    public Action HeavyAttackAction;
+   
+    public Action LightAttackAction0;
+    public Action LightAttackAction1;
+    public Action LightAttackAction2;
+    public Action LightAttackAction3;
+    
+    public Action HeavyAttackAction0;
+    public Action HeavyAttackAction1;
+    public Action HeavyAttackAction2;
 
     //Dash Input
-    private bool DashInput;
-    public Action DashAction;
-    
+    //private bool DashInput;
+    //public Action DashAction;
+
     private void OnEnable()
     {
         if (ActionManager == null)
@@ -64,7 +71,7 @@ public class InputManager : MonoBehaviour
             playercontrols.PlayerMovement.HeavyAttack.performed += i => HeavyAttackInput = true;
 
             //Read Shift Button
-            playercontrols.PlayerMovement.Dash.performed += i => DashInput = true;
+            //playercontrols.PlayerMovement.Dash.performed += i => DashInput = true;
         }
         if (PlayerCombatManager == null)
         {
@@ -91,14 +98,42 @@ public class InputManager : MonoBehaviour
     {
         if (LightAttackInput)
         {
-            //PlayerCombatManager.LightAttack();
+            
             LightAttackInput = false;
-            ActionManager.AddAction(LightAttackAction);
+            if (ActionManager.LightattackChainValue == 0)
+            {
+                ActionManager.AddAction(LightAttackAction0);
+            }
+            else if (ActionManager.LightattackChainValue == 1)
+            {
+                ActionManager.AddAction(LightAttackAction1);
+            }
+            else if (ActionManager.LightattackChainValue == 2)
+            {
+                ActionManager.AddAction(LightAttackAction2);
+            }
+            else if (ActionManager.LightattackChainValue == 3)
+            {
+                ActionManager.AddAction(LightAttackAction3);
+            }
+
         }
         if (HeavyAttackInput)
         {
             HeavyAttackInput= false;
-            ActionManager.AddAction(HeavyAttackAction);
+            if (ActionManager.HeavyattackChainValue == 0)
+            {
+                ActionManager.AddAction(HeavyAttackAction0);
+            }
+            if (ActionManager.HeavyattackChainValue == 1)
+            {
+                ActionManager.AddAction(HeavyAttackAction1);
+            }
+            if (ActionManager.HeavyattackChainValue == 2)
+            {
+                ActionManager.AddAction(HeavyAttackAction2);
+            }
+
         }
     }
 
@@ -216,7 +251,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void HandleDashInput()
+    /*private void HandleDashInput()
     {
         if (DashInput)
         {
@@ -226,13 +261,13 @@ public class InputManager : MonoBehaviour
                 ActionManager.AddAction(DashAction);
             }
         }
-    }
+    }*/
 
     public void HandleAllInput()
     {
         HandleMovmentInput();
         HandleLockOnInput();
         HandleAttackInput();
-        HandleDashInput();
+        //HandleDashInput();
     }
 }

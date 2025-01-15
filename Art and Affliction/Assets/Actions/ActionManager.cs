@@ -61,14 +61,17 @@ public class ActionManager : MonoBehaviour
     //add an action to the current slot if it is open, if not, add it to the next slot
     public void AddAction(Action action)
     {
+        //Dont add an action if the player is dead
         if (PlayerCombatManager.isDead)
         {
             return;
         }
+        //if the current action slot is empty add a action to the first slot
         if (!actionQueueSlot_CurrentisFull)
         {
             StartCoroutine(actionQueueCurrent(action));
         }
+        //if the action is an iterupt action and the current slot is full stop all actions and add the aciton to the current slot
         else if (action.isInteruptAction)
         {
             StopAllCoroutines();
@@ -76,6 +79,7 @@ public class ActionManager : MonoBehaviour
             actionQueueSlot_CurrentisFull = false;
             StartCoroutine(actionQueueCurrent(action));
         }
+        //if the current slot is full and the current aciton is half done add the aciton to the next slot
         else if (!actionQueueSlot_NextisFull)
         {
             if (ActionisHalfDone)
@@ -89,16 +93,23 @@ public class ActionManager : MonoBehaviour
     public IEnumerator actionQueueCurrent(Action action)
     {
         ActionisHalfDone = false;
+        
         actionQueueSlot_Current = action;
+        
         actionQueueSlot_CurrentisFull = true;
         
+        SetCurrentActionDuration(action.Animationclip.length);
+        
         ProcessAction(action);
+        
         yield return new WaitForSeconds(CurrentActionDuration / 2);
         ActionisHalfDone = true;
         yield return new WaitForSeconds(CurrentActionDuration / 2 - 0.1f);
 
         actionQueueSlot_CurrentisFull = false;
+       
         actionQueueSlot_Current = null;
+        
         ProcessEndOfAction(action);
     }
     public void SetCurrentActionDuration(float Length)
@@ -115,25 +126,87 @@ public class ActionManager : MonoBehaviour
         {
             GameObject CurrentWeapon = PlayerCombatManager.CurrentWeapon;
             WeaponData weaponData = CurrentWeapon.GetComponent<WeaponData>();
-            if (action.ActionName == "LightAttack")
+            if (action.ActionName == "LightAttack0")
             {
                 PlayerAnimationManager.HandleLightAttack(LightattackChainValue);
                 if (LightattackChainValue < weaponData.MaxLightAttackChainValue)
                 {
-                    LightattackChainValue++;
-                     
+                    LightattackChainValue = 1;
                 }
                 else
                 { 
                     LightattackChainValue = 0;
                 }
             }
-            if (action.ActionName == "HeavyAttack")
+            if (action.ActionName == "LightAttack1")
+            {
+                PlayerAnimationManager.HandleLightAttack(LightattackChainValue);
+                if (LightattackChainValue < weaponData.MaxLightAttackChainValue)
+                {
+                    LightattackChainValue = 2;
+
+                }
+                else
+                {
+                    LightattackChainValue = 0;
+                }
+            }
+            if (action.ActionName == "LightAttack2")
+            {
+                PlayerAnimationManager.HandleLightAttack(LightattackChainValue);
+                if (LightattackChainValue < weaponData.MaxLightAttackChainValue)
+                {
+                    LightattackChainValue = 3;
+
+                }
+                else
+                {
+                    LightattackChainValue = 0;
+                }
+            }
+            if (action.ActionName == "LightAttack3")
+            {
+                PlayerAnimationManager.HandleLightAttack(LightattackChainValue);
+                if (LightattackChainValue < weaponData.MaxLightAttackChainValue)
+                {
+                    LightattackChainValue++;
+
+                }
+                else
+                {
+                    LightattackChainValue = 0;
+                }
+            }
+            if (action.ActionName == "HeavyAttack0")
             {
                 PlayerAnimationManager.HandleHeavyAttack(HeavyattackChainValue);
                 if (HeavyattackChainValue < weaponData.MaxHeavyAttackChainValue)
                 {
-                    HeavyattackChainValue++;
+                    HeavyattackChainValue = 1;
+                }
+                else
+                {
+                    HeavyattackChainValue = 0;
+                }
+            }
+            if (action.ActionName == "HeavyAttack2")
+            {
+                PlayerAnimationManager.HandleHeavyAttack(HeavyattackChainValue);
+                if (HeavyattackChainValue < weaponData.MaxHeavyAttackChainValue)
+                {
+                    HeavyattackChainValue = 2;
+                }
+                else
+                {
+                    HeavyattackChainValue = 0;
+                }
+            }
+            if (action.ActionName == "HeavyAttack3")
+            {
+                PlayerAnimationManager.HandleHeavyAttack(HeavyattackChainValue);
+                if (HeavyattackChainValue < weaponData.MaxHeavyAttackChainValue)
+                {
+                    HeavyattackChainValue = 3;
                 }
                 else
                 {
@@ -143,10 +216,10 @@ public class ActionManager : MonoBehaviour
         }
         if (action.ActionType == "Other")
         {
-            if (action.ActionName == "Dash")
+            /*if (action.ActionName == "Dash")
             {
                 PlayerAnimationManager.HandleDash();
-            }
+            }*/
             if (action.ActionName == "HitStun")
             {
                 PlayerAnimationManager.HandleHitstun();

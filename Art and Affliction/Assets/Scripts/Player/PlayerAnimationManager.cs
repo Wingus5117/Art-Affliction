@@ -138,12 +138,12 @@ public class PlayerAnimationManager : MonoBehaviour
     void Update()
     {
         //Get Dash Direction
-        if (!isDashing)
+        /*if (!isDashing)
         {
             direction = GetMovementDirection();
             
             PreviousPosition = transform.position;
-        }
+        }*/
         
         // if we are getting a walk input and we are not doing an action right now handle the walk animaiton
         if (!ActionManager.actionQueueSlot_CurrentisFull && !PlayerCombatManager.isDead)
@@ -342,52 +342,59 @@ public class PlayerAnimationManager : MonoBehaviour
         
         Debug.Log("LightAttack0");
         PlayerAnimator.SetTrigger("Swing");
-        ActionManager.SetCurrentActionDuration(LightAttackAnimationLength0);
-        yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+        //ActionManager.SetCurrentActionDuration(LightAttackAnimationLength0);
+        //yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+        yield return null;
     }
     public IEnumerator LightAttack1()
     {
         Debug.Log("LightAttack1");
         PlayerAnimator.SetTrigger("Swing1");
-        ActionManager.SetCurrentActionDuration(LightAttackAnimationLength1);
-        yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+        //ActionManager.SetCurrentActionDuration(LightAttackAnimationLength1);
+        //yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+        yield return null;
     }
     public IEnumerator LightAttack2()
     {
         Debug.Log("LightAttack2");
         PlayerAnimator.SetTrigger("Swing2");
-        ActionManager.SetCurrentActionDuration(LightAttackAnimationLength2);
-        yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+        //ActionManager.SetCurrentActionDuration(LightAttackAnimationLength2);
+        //yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+         yield return null;
     }
     public IEnumerator LightAttack3()
     {
         Debug.Log("LightAttack3");
         PlayerAnimator.SetTrigger("Swing3");
-        ActionManager.SetCurrentActionDuration(LightAttackAnimationLength2);
-        yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+        //ActionManager.SetCurrentActionDuration(LightAttackAnimationLength2);
+        //yield return new WaitForSeconds(LightAttackAnimationLength0 - .1f);
+        yield return null;
     }
     public IEnumerator HeavyAttack0()
     {
         Debug.Log("HeavyAttack0");
         PlayerAnimator.SetTrigger("SwingHeavy");
-        ActionManager.SetCurrentActionDuration(HeavyAttackAnimationLength0);
-        yield return new WaitForSeconds(HeavyAttackAnimationLength0 - .1f);
+        //ActionManager.SetCurrentActionDuration(HeavyAttackAnimationLength0);
+        //yield return new WaitForSeconds(HeavyAttackAnimationLength0 - .1f);
+        yield return null;
     }
     public IEnumerator HeavyAttack1()
     {
         Debug.Log("HeavyAttack1");
         PlayerAnimator.SetTrigger("SwingHeavy1");
-        ActionManager.SetCurrentActionDuration(HeavyAttackAnimationLength1);
-        yield return new WaitForSeconds(HeavyAttackAnimationLength1 - .1f);
+        //ActionManager.SetCurrentActionDuration(HeavyAttackAnimationLength1);
+        //yield return new WaitForSeconds(HeavyAttackAnimationLength1 - .1f);
+        yield return null;
     }
     public IEnumerator HeavyAttack2()
     {
         Debug.Log("HeavyAttack2");
         PlayerAnimator.SetTrigger("SwingHeavy2");
-        ActionManager.SetCurrentActionDuration(HeavyAttackAnimationLength2);
-        yield return new WaitForSeconds(HeavyAttackAnimationLength2 - .1f);
+        //ActionManager.SetCurrentActionDuration(HeavyAttackAnimationLength2);
+        //yield return new WaitForSeconds(HeavyAttackAnimationLength2 - .1f);
+        yield return null;
     }
-    public void HandleDash()
+    /*public void HandleDash()
     {
         StartCoroutine(Dash());
         ActionManager.SetCurrentActionDuration(.5f);
@@ -459,7 +466,7 @@ public class PlayerAnimationManager : MonoBehaviour
         }
         // If there's no movement, return a zero vector
         return Vector3.zero;
-    }
+    }*/
     public void HandleHitstun()
     {
         ActionManager.SetCurrentActionDuration(1.25f);
