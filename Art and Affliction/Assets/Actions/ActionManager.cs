@@ -189,7 +189,7 @@ public class ActionManager : MonoBehaviour
                     HeavyattackChainValue = 0;
                 }
             }
-            if (action.ActionName == "HeavyAttack2")
+            if (action.ActionName == "HeavyAttack1")
             {
                 PlayerAnimationManager.HandleHeavyAttack(HeavyattackChainValue);
                 if (HeavyattackChainValue < weaponData.MaxHeavyAttackChainValue)
@@ -201,7 +201,7 @@ public class ActionManager : MonoBehaviour
                     HeavyattackChainValue = 0;
                 }
             }
-            if (action.ActionName == "HeavyAttack3")
+            if (action.ActionName == "HeavyAttack2")
             {
                 PlayerAnimationManager.HandleHeavyAttack(HeavyattackChainValue);
                 if (HeavyattackChainValue < weaponData.MaxHeavyAttackChainValue)
