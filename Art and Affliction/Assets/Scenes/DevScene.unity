@@ -644,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 579779069480449452, guid: 6d93589d3bef1074c9f2cc741ce757ad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6678080932035816521, guid: 6d93589d3bef1074c9f2cc741ce757ad, type: 3}
       propertyPath: AgroManager

@@ -9,7 +9,8 @@ public class Action : MonoBehaviour
     //LightAttack, HeavyAttack, Dash
     public string ActionName;
     //Does it interupt other actions
-    public bool isInteruptAction;
+    //public bool isInteruptAction;
+    public float InteruptPriority;
     //Animation Played
     public AnimationClip Animationclip;
 }
