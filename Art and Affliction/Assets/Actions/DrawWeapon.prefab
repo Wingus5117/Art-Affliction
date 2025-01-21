@@ -47,4 +47,5 @@ MonoBehaviour:
   ActionType: Other
   ActionName: DrawWeapon
   isInteruptAction: 0
+  InteruptPriority: 5
   Animationclip: {fileID: 7400000, guid: 8d44cd174c2c81b41a25ee5b912e4813, type: 2}

@@ -12,7 +12,7 @@ public class EnemyDetection : MonoBehaviour
             Enemy enemy = GetComponentInParent<Enemy>();
             enemy.isPatrolling = false;
             enemy.isIdle = false;
-            enemy.isAttacking = true;
+            enemy.isInCombat = true;
         }
     }
 }

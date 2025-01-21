@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class EnemyTemplate : Enemy
+public class EnemyTemplate2 : Enemy
 {
     private float EnemiesAttacking;
     private bool StrafeRight;
@@ -49,83 +49,64 @@ public class EnemyTemplate : Enemy
     {
         if (isInCombat && !isDead)
         {
-            if (AgroManager.agressiveEnemyCounter >= 3 && !SubState_isAttacking)
+            //Stop all movemtn animations and play draw weapon for 3 seconds
+            ClearMovementAnimationBools();
+            StartCoroutine(DrawWeapon());
+            AgroManager.agressiveEnemyCounter++;
+            
+            //once the weapon is drawn begin combat logic
+            if (HasDrawnWeapon)
             {
-                //Strafe
-                if (!isStrafing)
+                //find distance to the player
+                DistanceToPlayer = Vector3.Distance(gameObject.transform.position, Player.transform.position);
+                
+                //Do an attack if player in in range and the player in the the attack box (the trigger attached to the enemy gameobject)
+                if (IsInAttackRange && PlayerisInAttackBox)
+                {
+                    StopMove();
+                    ClearMovementAnimationBools();
+                    //dont rotate to the player
+                    tryToLookAtPlayer = false;
+                    //if we are not currently in an attack animation, do an attack
+                    if (!isInAttackAnimation)
+                    {
+                        //Begin Attack logic
+                        StartCoroutine(SubState_Attacking());
+                    }
+                    return;
+                }
+
+                // Check1 = check if player is inside the enemy attack range
+                if (DistanceToPlayer <= AttackRange && !isInAttackAnimation)
+                {
+                    StopMove();
+                    ClearMovementAnimationBools();
+                    IsInAttackRange = true;
+                    // Check2 = check if the enemy is facing the polayer by referencing the attack box
+                    if (PlayerisInAttackBox)
+                    {
+                        isFacingPlayer = true;
+                    }
+                    // if the player is not in the attack box rotate to them
+                    else
+                    {
+                        StopMove();
+                        ClearMovementAnimationBools();
+                        tryToLookAtPlayer = true;
+                        IsInAttackRange = true;
+                    }
+                }
+                // if we are not in the attack range look at the player and move to them
+                else if (!isInAttackAnimation)
                 {
                     tryToLookAtPlayer = true;
-                    StartCoroutine(SubState_Strafing());
+                    MoveToPlayer();
+                    Animator.SetBool("WalkForwards", true);
                 }
             }
-            else
-            {
-                Animator.SetBool("WalkLeft", false);
-                Animator.SetBool("WalkRight", false);
-                if (!SubState_isAttacking)
-                {
-                    AgroManager.agressiveEnemyCounter++;
-                    StartCoroutine(DrawWeapon());
-                    StopMove();
-                    Animator.SetTrigger("DrawWeapon");
-                    Animator.SetBool("WalkForwards", false);
-                    StopMove();
-                    SubState_isAttacking = true;
-                }
-
-                if (HasDrawnWeapon)
-                {
-                    DistanceToPlayer = Vector3.Distance(gameObject.transform.position, Player.transform.position);
-                    //Do an attack if player in in range and is facing player
-                    if (IsInAttackRange && PlayerisInAttackBox)
-                    {
-                        StopMove();
-                        Animator.SetBool("WalkForwards", false);
-                        tryToLookAtPlayer = false;
-                        isInCombat = true;
-                        if (!isInAttackAnimation)
-                        {
-                            StartCoroutine(SubState_Attacking());
-                        }
-                        return;
-                    }
-
-                    // if we are in attack range
-                    if (DistanceToPlayer <= AttackRange && !isInAttackAnimation)
-                    {
-                        StopMove();
-                        Animator.SetBool("WalkForwards", false);
-                        IsInAttackRange = true;
-                    }
-                    //if we are far away from the player move towards him
-                    if (DistanceToPlayer >= AttackRange && !isInAttackAnimation)
-                    {
-                        tryToLookAtPlayer = true;
-                        MoveToPlayer();
-                        Animator.SetBool("WalkForwards", true);
-                    }
-                    //if we are in attack range but not facing the player look at him
-                    else if (!PlayerisInAttackBox && !isInAttackAnimation)
-                    {
-                        StopMove();
-                        Animator.SetBool("WalkForwards", false);
-                        tryToLookAtPlayer = true;
-                        IsInAttackRange = true;
-                    }
-                }
-            }
-            return;
-        }
-        if (!isDead && isPatrolling)
-        {
-            Animator.SetBool("WalkForwards", true);
-        }
-        else if (!isDead)
-        {
-            Animator.SetBool("WalkForwards", false);
         }
     }
-    private IEnumerator SubState_Strafing()
+    /*private IEnumerator SubState_Strafing()
     {
         isStrafing = true;
         if (StrafeRight)
@@ -160,7 +141,7 @@ public class EnemyTemplate : Enemy
         StrafeRight = !StrafeRight;
         isStrafing = false;
         yield return null;
-    }
+    }*/
     private IEnumerator SubState_Attacking()
     {
         isInAttackAnimation = true;
@@ -206,7 +187,15 @@ public class EnemyTemplate : Enemy
     }
     private IEnumerator DrawWeapon()
     {
+        Animator.SetTrigger("DrawWeapon");
         yield return new WaitForSeconds(3f);
         HasDrawnWeapon = true;
+    }
+    private void ClearMovementAnimationBools()
+    {
+        Animator.SetBool("WalkLeft", false);
+        Animator.SetBool("WalkRight", false);
+        Animator.SetBool("WalkForwards", false);
+        Animator.SetBool("WalkBackwards", false);
     }
 }

@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour
     internal float DistanceToPlayer;
     internal NavMeshAgent NavMeshAgent;
     internal bool IsInAttackRange = false;
+    internal bool isFacingPlayer;
     internal bool tryToLookAtPlayer = false;
     public float AttackRange;
     public float Lookspeed = 2.5f;
@@ -27,7 +28,7 @@ public abstract class Enemy : MonoBehaviour
     public Image HealthBar;
 
     //States
-    public bool isAttacking;
+    public bool isInCombat;
     public bool isIdle;
     public bool isPatrolling;
     internal bool SubState_isAttacking;
@@ -47,7 +48,7 @@ public abstract class Enemy : MonoBehaviour
     //PlayerDetectionBox
     public Collider DetectionBox;
 
-    //Boss LOgic
+    //Boss Logic
     internal bool isBoss;
     public void Awake()
     {
@@ -62,6 +63,8 @@ public abstract class Enemy : MonoBehaviour
     }
     public void Update()
     {
+        
+        
         NewUpdate();
         if (CurrentHealth <= 0)
         {
@@ -82,7 +85,7 @@ public abstract class Enemy : MonoBehaviour
         //If we should be rotating to look at the player
         if (tryToLookAtPlayer)
         {
-            RotateEnemy();
+            RotateEnemyOverTime();
         }
         
     }
@@ -103,7 +106,7 @@ public abstract class Enemy : MonoBehaviour
             }
             return;
         }
-        if (isAttacking)
+        if (isInCombat)
         {
             NavMeshAgent.updateRotation = false;
         }
@@ -125,7 +128,7 @@ public abstract class Enemy : MonoBehaviour
         NavMeshAgent.SetDestination(gameObject.transform.position);
         Debug.Log("StopMove");
     }
-    public void RotateEnemy()
+    public void RotateEnemyOverTime()
     {
         Vector3 dir = Player.transform.position - transform.position;
         dir.y = 0; // keep the direction strictly horizontal

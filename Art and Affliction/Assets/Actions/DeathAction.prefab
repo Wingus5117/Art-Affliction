@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionType: Other
   ActionName: Death
-  isInteruptAction: 1
+  isInteruptAction: 0
+  InteruptPriority: 5
   Animationclip: {fileID: 7400000, guid: 413c177da3e6e5e4f815746d9b5c9036, type: 2}

@@ -51,7 +51,7 @@ public class BossManager : MonoBehaviour
         if (!BossIsActive)
         {
             BossEnemy.isIdle = false;
-            BossEnemy.isAttacking = true;
+            BossEnemy.isInCombat = true;
             BossUI.gameObject.SetActive(true);
             BossIsActive = true;
 

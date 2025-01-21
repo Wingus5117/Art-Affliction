@@ -47,4 +47,5 @@ MonoBehaviour:
   ActionType: Other
   ActionName: HitStun
   isInteruptAction: 1
+  InteruptPriority: 4
   Animationclip: {fileID: 7400000, guid: 49dbeb151c8128341b6cac489f66d77e, type: 2}

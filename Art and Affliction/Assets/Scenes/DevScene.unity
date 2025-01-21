@@ -647,9 +647,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6678080932035816521, guid: 6d93589d3bef1074c9f2cc741ce757ad, type: 3}
+      propertyPath: isIdle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678080932035816521, guid: 6d93589d3bef1074c9f2cc741ce757ad, type: 3}
       propertyPath: AgroManager
       value: 
       objectReference: {fileID: 3007715412042454787}
+    - target: {fileID: 6678080932035816521, guid: 6d93589d3bef1074c9f2cc741ce757ad, type: 3}
+      propertyPath: isAttacking
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6678080932035816521, guid: 6d93589d3bef1074c9f2cc741ce757ad, type: 3}
       propertyPath: PatrolPoints.Array.data[0]
       value: 
@@ -1215,6 +1223,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 4132a9685a9d6bb4eb8db3294f16f68e, type: 2}
     - target: {fileID: 6948497634710602401, guid: ff4d141df9f92814f8179f8f41fff822, type: 3}
+      propertyPath: isIdle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948497634710602401, guid: ff4d141df9f92814f8179f8f41fff822, type: 3}
       propertyPath: AgroManager
       value: 
       objectReference: {fileID: 3007715412042454787}
@@ -1224,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7190820246550040841, guid: ff4d141df9f92814f8179f8f41fff822, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1249,7 +1261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 732594009195414894, guid: d5592b75255aa4f4386bc29b3a10e3ab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1770441724417213524, guid: d5592b75255aa4f4386bc29b3a10e3ab, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1296,9 +1308,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1851680247491212845, guid: d5592b75255aa4f4386bc29b3a10e3ab, type: 3}
+      propertyPath: isIdle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851680247491212845, guid: d5592b75255aa4f4386bc29b3a10e3ab, type: 3}
       propertyPath: AgroManager
       value: 
       objectReference: {fileID: 3007715412042454787}
+    - target: {fileID: 1851680247491212845, guid: d5592b75255aa4f4386bc29b3a10e3ab, type: 3}
+      propertyPath: isAttacking
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1851680247491212845, guid: d5592b75255aa4f4386bc29b3a10e3ab, type: 3}
       propertyPath: PatrolPoints.Array.data[0]
       value: 

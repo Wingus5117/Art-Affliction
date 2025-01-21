@@ -47,4 +47,5 @@ MonoBehaviour:
   ActionType: Attack
   ActionName: LightAttack1
   isInteruptAction: 0
+  InteruptPriority: 1
   Animationclip: {fileID: 7400000, guid: 36e8346ad10a2f841bdd94606683dfc2, type: 2}

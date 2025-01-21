@@ -47,4 +47,5 @@ MonoBehaviour:
   ActionType: Attack
   ActionName: HeavyAttack2
   isInteruptAction: 0
+  InteruptPriority: 1
   Animationclip: {fileID: 7400000, guid: a733575d6113b144cb0ab7ac58620785, type: 2}

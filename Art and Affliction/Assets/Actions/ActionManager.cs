@@ -72,7 +72,7 @@ public class ActionManager : MonoBehaviour
             StartCoroutine(actionQueueCurrent(action));
         }
         //if the action is an iterupt action and the current slot is full stop all actions and add the aciton to the current slot
-        else if (action.isInteruptAction)
+        else if (action.InteruptPriority > actionQueueSlot_Current.InteruptPriority)
         {
             StopAllCoroutines();
             actionQueueSlot_Current = null;

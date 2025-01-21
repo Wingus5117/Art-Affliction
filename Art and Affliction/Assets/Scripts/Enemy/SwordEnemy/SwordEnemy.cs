@@ -57,7 +57,7 @@ public class SwordEnemy : Enemy
     public override void NewUpdate()
     {
         
-        if (isAttacking && !isDead)
+        if (isInCombat && !isDead)
         {
              
             if (AgroManager.agressiveEnemyCounter >= 3 && !SubState_isAttacking)
@@ -93,7 +93,7 @@ public class SwordEnemy : Enemy
                         StopMove();
                         Animator.SetBool("WalkForwards", false);
                         tryToLookAtPlayer = false;
-                        isAttacking = true;
+                        isInCombat = true;
                         if (!isInAttackAnimation)
                         {
                             StartCoroutine(SubState_Attacking());
