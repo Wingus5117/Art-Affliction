@@ -126,7 +126,7 @@ public abstract class Enemy : MonoBehaviour
     public void StopMove()
     {
         NavMeshAgent.SetDestination(gameObject.transform.position);
-        Debug.Log("StopMove");
+        
     }
     public void RotateEnemyOverTime()
     {

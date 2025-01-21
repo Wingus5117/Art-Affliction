@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 1801908944608112595}
   - component: {fileID: 4544371519668956200}
   - component: {fileID: 8756642070960400069}
-  - component: {fileID: 1851680247491212845}
   - component: {fileID: 737547218131646213}
   - component: {fileID: 1081631804612216566}
   m_Layer: 7
@@ -210,39 +209,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1851680247491212845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732594009195414894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2965c44cff1a55d4e9e6d70442f3e8b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  EnemyLockOnPoint: {fileID: 3655550791292290134}
-  CurrentHealth: 200
-  MaxHealth: 200
-  AttackRange: 2
-  Lookspeed: 5
-  PlayerisInAttackBox: 0
-  HealthBar: {fileID: 5052053424866677401}
-  isAttacking: 1
-  isIdle: 0
-  isPatrolling: 0
-  Animator: {fileID: 1081631804612216566}
-  PatrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  DetectionBox: {fileID: 1210994933402505979}
-  AgroManager: {fileID: 0}
-  DelayBetweenAttacks: 0.5
-  DeathParticleEffect: {fileID: 56852242586695117, guid: 00b05f8607460e44988aef0d0e0deff4, type: 3}
-  ParticleSpawnPoint: {fileID: 4823942286343903535}
 --- !u!65 &737547218131646213
 BoxCollider:
   m_ObjectHideFlags: 0
